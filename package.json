@@ -7,8 +7,8 @@
     "build": "./node_modules/.bin/webpack -p",
     "watch": "./node_modules/.bin/webpack --watch",
     "flow": "./node_modules/.bin/flow",
-    "test":
-      "./node_modules/.bin/mocha --compilers js:babel-core/register --colors -w ./src/js/test/*.test.js"
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --colors -w ./src/js/test/*.test.js",
+    "typings": "./node_modules/.bin/flow-typed install"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "babel-preset-flow": "^6.23.0",
     "chai": "^4.1.2",
     "flow-bin": "^0.70.0",
+    "flow-typed": "^2.4.0",
     "mocha": "^5.1.1",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15"
