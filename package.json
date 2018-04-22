@@ -1,0 +1,28 @@
+{
+  "name": "testweb",
+  "version": "0.0.1",
+  "description": "desc",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack -p",
+    "watch": "./node_modules/.bin/webpack --watch",
+    "flow": "./node_modules/.bin/flow",
+    "test":
+      "./node_modules/.bin/mocha --compilers js:babel-core/register --colors -w ./src/js/test/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "chai": "^4.1.2",
+    "flow-bin": "^0.70.0",
+    "mocha": "^5.1.1",
+    "mocha-webpack": "^1.1.0",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
+  }
+}
