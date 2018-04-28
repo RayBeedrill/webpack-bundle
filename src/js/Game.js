@@ -4,11 +4,14 @@ export default class Game {
   _userMoveSymbol: string;
   _computerMoveSymbol: string;
   _history: Array<mixed>;
+  _fieldSize: number;
+
   constructor(): void {
     this._board = [["", "", ""], ["", "", ""], ["", "", ""]];
     this._userMoveSymbol = "x";
     this._computerMoveSymbol = "o";
     this._history = [];
+    this._fieldSize = 3;
   }
   getState(): Array<Array<string>> {
     return this._board;
@@ -22,11 +25,31 @@ export default class Game {
     }
   }
   createComputerMove(): void {
-    this._history.push({ turn: "computer", x: 0, y: 0 });
-    this._updateBoard(0, 0, { moveSymbol: this._computerMoveSymbol });
+    const freeCells = this._board.reduce(
+      (total, row) =>
+        row.reduce((count, el) => (el === "" ? ++count : count), total),
+      0
+    );
+
+    if (!freeCells) {
+      return;
+    }
+    let x: number = this._getRandomCoordinate();
+    let y: number = this._getRandomCoordinate();
+
+    while (!!this._board[x][y]) {
+      x = this._getRandomCoordinate();
+      y = this._getRandomCoordinate();
+    }
+
+    this._history.push({ turn: "computer", x, y });
+    this._updateBoard(x, y, { moveSymbol: this._computerMoveSymbol });
   }
   getMoveHistory(): Array<mixed> {
     return this._history;
+  }
+  _getRandomCoordinate(): number {
+    return Math.floor(Math.random() * (this._fieldSize - 0));
   }
   _updateBoard(x: number, y: number, config: { moveSymbol: string }): void {
     const { moveSymbol = this._userMoveSymbol } = config;
